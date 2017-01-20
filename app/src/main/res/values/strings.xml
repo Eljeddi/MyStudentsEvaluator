@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Students Evaluator</string>
+    <string name="auth_failed">Authentification failed</string>
+    <string name="facebook_app_id">732773240210982</string>
+</resources>

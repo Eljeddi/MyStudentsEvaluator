@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "590793480530",
+    "firebase_url": "https://acetask-7f196.firebaseio.com",
+    "project_id": "acetask-7f196",
+    "storage_bucket": "acetask-7f196.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590793480530:android:890caf6e6cdd4298",
+        "android_client_info": {
+          "package_name": "com.apps2life.acetask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590793480530-f918prdrp0vh18573p0ij85179hqlbur.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps2life.acetask",
+            "certificate_hash": "11AA53EF66BB7885A32292A3AA8166EAE40B0A5A"
+          }
+        },
+        {
+          "client_id": "590793480530-n95apfv09tee1j7t96bm87s1449scrim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvd3BN5RDESacaSIgO75Je9pid88Nxnh4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590793480530-n95apfv09tee1j7t96bm87s1449scrim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590793480530:android:404c2b4b80c2585d",
+        "android_client_info": {
+          "package_name": "com.apps2life.mystudentsevaluator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590793480530-ind875siso1gtl0t2dlp34qkvq18d96u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apps2life.mystudentsevaluator",
+            "certificate_hash": "11AA53EF66BB7885A32292A3AA8166EAE40B0A5A"
+          }
+        },
+        {
+          "client_id": "590793480530-n95apfv09tee1j7t96bm87s1449scrim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvd3BN5RDESacaSIgO75Je9pid88Nxnh4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590793480530-n95apfv09tee1j7t96bm87s1449scrim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
