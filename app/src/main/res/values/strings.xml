@@ -2,4 +2,11 @@
     <string name="app_name">My Students Evaluator</string>
     <string name="auth_failed">Authentification failed</string>
     <string name="facebook_app_id">732773240210982</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="logo_text">Evaluer n\'importe ou,n\'importe quand !</string>
+    <string name="rsclogin">login</string>
+    <string name="noAccount">Pas encore inscrit ?</string>
+    <string name="emailhint">" Email"</string>
+    <string name="loading">loading ...</string>
+    <string name="passwordhint">" Password"</string>
 </resources>
