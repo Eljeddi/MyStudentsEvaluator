@@ -9,4 +9,18 @@
     <string name="emailhint">" Email"</string>
     <string name="loading">loading ...</string>
     <string name="passwordhint">" Password"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="dialog_fire_missiles">Who are you ?</string>
+    <string name="teacher_choice">Teacher</string>
+    <string name="student_choice">Student</string>
+    <string-array name="job">
+        <item>Teacher</item>
+        <item>Student</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_add_quizz">AddQuizz</string>
+
 </resources>

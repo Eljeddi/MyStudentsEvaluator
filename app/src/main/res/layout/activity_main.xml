@@ -10,7 +10,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.apps2life.mystudentsevaluator.MainActivity">
     <TextView
+        android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="yeaaaaa mother fuckers... it fuckin works"/>
+        android:text="les quiz déja crée seront ici ! "/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:onClick="addQuizz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:elevation="5dp"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_marginLeft="@dimen/fab_margin"
+        android:layout_marginRight="@dimen/fab_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp" />
 </RelativeLayout>
