@@ -38,5 +38,6 @@ public class Question {
     public  String getOp3(){
         return op3;
     }
+    public String toString(){return qst;}
 
 }

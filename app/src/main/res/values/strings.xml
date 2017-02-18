@@ -12,8 +12,8 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="dialog_fire_missiles">Who are you ?</string>
-    <string name="teacher_choice">Teacher</string>
-    <string name="student_choice">Student</string>
+    <string name="teacher_choice">Enseignant</string>
+    <string name="student_choice">Eleve</string>
     <string-array name="job">
         <item>Teacher</item>
         <item>Student</item>

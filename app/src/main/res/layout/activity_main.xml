@@ -9,23 +9,19 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.apps2life.mystudentsevaluator.MainActivity">
-    <TextView
-        android:id="@+id/tv"
+    <ListView
+        android:id="@+id/lv"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="les quiz déja crée seront ici ! "/>
+        android:layout_height="wrap_content" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:onClick="addQuizz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:elevation="5dp"
+        android:layout_gravity="end|bottom"
         android:src="@android:drawable/ic_input_add"
-        android:layout_marginLeft="@dimen/fab_margin"
-        android:layout_marginRight="@dimen/fab_margin"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="13dp" />
+        />
 </RelativeLayout>
