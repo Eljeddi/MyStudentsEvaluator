@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,6 +20,7 @@ public class AddQuizz extends AppCompatActivity {
     EditText option1 ;
     EditText option2 ;
     EditText option3 ;
+    String uid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,9 +35,14 @@ public class AddQuizz extends AppCompatActivity {
                         //.setAction("Action", null).show()
 
                 // Write a message to the database
-                quizName=((EditText)findViewById(R.id.QuizName)).getText().toString();
+                //String email=myRef.getAuth().password.email;
+                uid = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                int p=uid.indexOf("@");
+                uid=uid.substring(0,p);//getUid();
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference();
+                DatabaseReference myRef = database.getReference(uid);
+                quizName=((EditText)findViewById(R.id.QuizName)).getText().toString();
+
                 DatabaseReference myRefChild=myRef.child(quizName);
                 myRefChild.setValue(builder.toString());
                 //myRef.child(quizName).push().setValue(builder.toString());

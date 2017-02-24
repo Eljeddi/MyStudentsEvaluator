@@ -9,6 +9,7 @@
     <string name="emailhint">" Email"</string>
     <string name="loading">loading ...</string>
     <string name="passwordhint">" Password"</string>
+    <string name="confirm">Confirm</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="dialog_fire_missiles">Who are you ?</string>

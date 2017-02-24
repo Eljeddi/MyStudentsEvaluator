@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,27 +31,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    String rslt;
     private static final String TAG = "MainActivity";
     public int checkedItem;
     DialogInterface.OnClickListener listener;
     AddQuizz AQ=new AddQuizz();
     private ArrayList<String> Alist=new ArrayList<>();
     private ListView listView;
+    String uid = FirebaseAuth.getInstance().getCurrentUser().getEmail();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(isFirstTime())
             whoAreYouMsg();
         setContentView(R.layout.activity_main);
+        int p=uid.indexOf("@");
+        uid=uid.substring(0,p);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference();
+        DatabaseReference myRef = database.getReference(uid);
         listView=(ListView)findViewById(R.id.lv);
         final ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,Alist);
         listView.setAdapter(arrayAdapter);
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //String quizName;
                 String value=dataSnapshot.getKey();
+
+                //if(value.equals(uid))
+                //quizName=dataSnapshot.child(value).getKey();  //child(value).getKey();
+                //else quizName="you have no quiz";
                 Alist.add(value);
                 arrayAdapter.notifyDataSetChanged();
 
@@ -81,13 +91,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void whoAreYouMsg(){
+    private String whoAreYouMsg(){
         AlertDialog.Builder info = new AlertDialog.Builder(this);
         info.setTitle("Vous ete un");
         //info.setMessage("Cooool boy");
-        info.setPositiveButton("Confirm", null);
+        info.setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ListView lw = ((AlertDialog)dialog).getListView();
+                Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
+                Log.d(TAG, checkedItem.toString());
+                rslt=checkedItem.toString();
+                SharedPreferences pref=getPreferences(MODE_PRIVATE);
+                SharedPreferences.Editor editor=pref.edit();
+                editor.putString("job",rslt);
+                editor.commit();
+            }
+        });
+        //info.setPositiveButton(R.string.confirm, null);
         info.setSingleChoiceItems(R.array.job,checkedItem,listener);
         info.show();
+        return rslt;
     }
     private boolean isFirstTime()
     {
