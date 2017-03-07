@@ -25,7 +25,9 @@
         <activity
             android:name=".AddQuizz"
             android:label="@string/title_activity_add_quizz"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".StudentMainActivity" />
+        <activity android:name=".TeacherOrStudent"></activity>
     </application>
 
 </manifest>

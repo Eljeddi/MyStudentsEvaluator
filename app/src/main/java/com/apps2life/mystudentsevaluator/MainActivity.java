@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -39,11 +40,19 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> Alist=new ArrayList<>();
     private ListView listView;
     String uid = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+    SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(isFirstTime())
-            whoAreYouMsg();
+        //if(isFirstTime())
+            //whoAreYouMsg();
+        //if it is a student then take him to the other StudentMainActivity
+        /*String str=PreferenceManager.getDefaultSharedPreferences(MainActivity.this).getString("job","Nothing");
+        Log.d(TAG,str);
+        if(str.equals("Student")) {
+            Intent intent = new Intent(MainActivity.this, StudentMainActivity.class);
+            startActivity(intent);
+        }*/
         setContentView(R.layout.activity_main);
         int p=uid.indexOf("@");
         uid=uid.substring(0,p);
@@ -91,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private String whoAreYouMsg(){
+    /*private void whoAreYouMsg(){
         AlertDialog.Builder info = new AlertDialog.Builder(this);
         info.setTitle("Vous ete un");
         //info.setMessage("Cooool boy");
@@ -100,22 +109,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 ListView lw = ((AlertDialog)dialog).getListView();
                 Object checkedItem = lw.getAdapter().getItem(lw.getCheckedItemPosition());
-                Log.d(TAG, checkedItem.toString());
+                //Log.d(TAG, checkedItem.toString());
                 rslt=checkedItem.toString();
-                SharedPreferences pref=getPreferences(MODE_PRIVATE);
-                SharedPreferences.Editor editor=pref.edit();
-                editor.putString("job",rslt);
-                editor.commit();
+
+                PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit().putString("job",rslt).commit();
+
             }
         });
         //info.setPositiveButton(R.string.confirm, null);
         info.setSingleChoiceItems(R.array.job,checkedItem,listener);
         info.show();
-        return rslt;
-    }
-    private boolean isFirstTime()
+    }*/
+    /*private boolean isFirstTime()
     {
-        SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+        preferences = getPreferences(MODE_PRIVATE);
         boolean ranBefore = preferences.getBoolean("RanBefore", false);
         if (!ranBefore) {
             // first time
@@ -124,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             editor.commit();
         }
         return !ranBefore;
-    }
+    }*/
 public void addQuizz(View view){
     Intent intent=new Intent(MainActivity.this,AddQuizz.class);
     startActivity(intent);

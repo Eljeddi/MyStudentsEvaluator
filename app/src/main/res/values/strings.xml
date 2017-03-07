@@ -6,9 +6,9 @@
     <string name="logo_text">Evaluer n\'importe ou,n\'importe quand !</string>
     <string name="rsclogin">login</string>
     <string name="noAccount">Pas encore inscrit ?</string>
-    <string name="emailhint">" Email"</string>
+    <string name="emailhint">" Adresse email"</string>
     <string name="loading">loading ...</string>
-    <string name="passwordhint">" Password"</string>
+    <string name="passwordhint">" Mot de passe"</string>
     <string name="confirm">Confirm</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -23,5 +23,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_add_quizz">AddQuizz</string>
+    <string name="title_activity_teacher_main">TeacherMainActivity</string>
+    <string name="are_you_a">Are you a </string>
+    <string name="searchText">search</string>
+    <string name="search_teacher">Trouver les quiz de votre enseignant</string>
 
 </resources>

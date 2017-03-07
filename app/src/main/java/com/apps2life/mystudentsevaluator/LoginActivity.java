@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.Toast;
 //android.graphics.drawable.RippleDrawable
 import android.graphics.drawable.RippleDrawable;
@@ -40,6 +43,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import static android.R.attr.data;
+import static android.R.attr.defaultValue;
 import static android.R.attr.dialogMessage;
 import static android.R.attr.password;
 
@@ -59,7 +63,9 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         emailf=(EditText)findViewById(R.id.emailid);
         pwd=(EditText)findViewById(R.id.passwordid);
-        final Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+        //final Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+        //final Intent sintent=new Intent(LoginActivity.this,StudentMainActivity.class);
+        //final Intent tintent=new Intent(LoginActivity.this,TeacherMainActivity.class);
         AppEventsLogger.activateApp(this);
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
@@ -84,8 +90,9 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
 
-                    startActivity(intent);
+                    //startActivity(intent);
                     // User is signed in
+                    goToTheRightActivity();
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                 } else {
                     // User is signed out
@@ -107,7 +114,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
                 handleFacebookAccessToken(loginResult.getAccessToken());
-                startActivity(intent);
+                //startActivity(intent);
+                goToTheRightActivity();
 
             }
 
@@ -190,8 +198,10 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, R.string.auth_failed,
                                     Toast.LENGTH_SHORT).show();
                         }else {
-                            final Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                            startActivity(intent);
+                            //final Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                            //startActivity(intent);
+                            //Rappel: lcode libch t3abi bih lshared preferences à partir ml radio button 7oto lhné
+                            goToTheRightActivity();
                         }
 
                         // [START_EXCLUDE]
@@ -226,8 +236,9 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                         }
                         if(task.isSuccessful()){
-                            final Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                            startActivity(intent);
+                            //final Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                            //startActivity(intent);
+                            goToTheRightActivity();
                         }
                         // [START_EXCLUDE]
                         hideProgressDialog();
@@ -301,5 +312,16 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
     // [END auth_with_facebook]
+        public void goToTheRightActivity(){
+            switch(PreferenceManager.getDefaultSharedPreferences(LoginActivity.this).getString("job","Nothing")){
+                //case "Nothing": startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    //break;
+                case "Student": startActivity(new Intent(LoginActivity.this,StudentMainActivity.class));
+                    break;
+                case "Teacher": startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    break;
+                default :startActivity(new Intent(LoginActivity.this,TeacherOrStudent.class));
+            }
+        }
 
 }

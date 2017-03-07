@@ -81,18 +81,10 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:onClick="newUserAccountCreation" />
+
 </LinearLayout>
 
-    <TextView
-        android:layout_above="@+id/button_facebook_login"
-        android:id="@+id/noAccountTextId"
-        android:textColor="@color/white"
-        android:text="@string/noAccount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_alignLeft="@+id/logo_text"/>
-
+    
     <com.facebook.login.widget.LoginButton
         android:layout_marginTop="5dp"
         android:layout_width="300dp"
