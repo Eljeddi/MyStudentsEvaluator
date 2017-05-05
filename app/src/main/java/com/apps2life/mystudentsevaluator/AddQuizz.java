@@ -2,10 +2,13 @@ package com.apps2life.mystudentsevaluator;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +24,8 @@ public class AddQuizz extends AppCompatActivity {
     EditText option2 ;
     EditText option3 ;
     String uid;
+    TextView tv;
+    int qstNum=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +36,8 @@ public class AddQuizz extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        //.setAction("Action", null).show()
+                Snackbar.make(view, "Votre quiz a été ajouté avec succès", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
 
                 // Write a message to the database
                 //String email=myRef.getAuth().password.email;
@@ -57,13 +62,32 @@ public class AddQuizz extends AppCompatActivity {
          option3 = (EditText) findViewById(R.id.op3id);
 
 
+        //toggleButton
+        ToggleButton toggle1 = (ToggleButton) findViewById(R.id.tgq1);
+        ToggleButton toggle2 = (ToggleButton) findViewById(R.id.tgq2);
+        ToggleButton toggle3 = (ToggleButton) findViewById(R.id.tgq3);
+
+        qstNum++;
+        tv=(TextView)findViewById(R.id.tv);
+        tv.setText("q"+qstNum);
+
+
         builder.append(question.getText().toString().trim());
         builder.append(delimiter);
-        builder.append(option1.getText().toString().trim());
+        if(toggle1.isChecked())
+        builder.append(option1.getText().toString().trim()+"$");
+        else
+            builder.append(option1.getText().toString().trim());
         builder.append(delimiter);
-        builder.append(option2.getText().toString().trim());
+        if(toggle2.isChecked())
+        builder.append(option2.getText().toString().trim()+"$");
+        else
+            builder.append(option2.getText().toString().trim());
         builder.append(delimiter);
-        builder.append(option3.getText().toString().trim());
+        if (toggle3.isChecked())
+        builder.append(option3.getText().toString().trim()+"$");
+        else
+            builder.append(option3.getText().toString().trim());
         builder.append(delimiter);
         question.setText("");
         option1.setText("");
